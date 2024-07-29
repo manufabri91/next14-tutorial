@@ -1,0 +1,17 @@
+.container {
+  height: 100px;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  color: gray;
+}
+
+.logo {
+  font-weight: bold;
+
+}
+
+.text {
+  font-size: 12px;
+}

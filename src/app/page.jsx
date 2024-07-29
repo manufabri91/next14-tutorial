@@ -1,5 +1,29 @@
+import Image from "next/image";
+import styles from "./home.module.css";
+
 const Home = () => {
-  return <div>Homepage</div>;
+  return (
+    <div className={styles.container}>
+      <div className={styles.textContainer}>
+        <h1>Creative Thoughts Agency</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
+          temporibus dolorum fuga, aliquam cumque id nemo numquam delectus
+          laborum earum ab consequuntur quidem qui porro architecto.
+        </p>
+        <div className={styles.buttons}>
+          <button className={styles.button}>Learn More</button>
+          <button className={styles.button}>Contact</button>
+        </div>
+        <div className={styles.brands}>
+          <Image src="/brands.png" alt="" fill className={styles.brandImage} />
+        </div>
+      </div>
+      <div className={styles.imageContainer}>
+        <Image src="/hero.gif" alt="" fill className={styles.heroImage} />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
