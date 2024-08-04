@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import styles from "./links.module.css";
 import NavbarLink from "../navbarLink/NavbarLink";
+import Image from "next/image";
 
 export const LINKS = [
   { title: "Homepage", path: "/" },
@@ -32,12 +33,14 @@ const Links = () => {
           <NavbarLink item={{ title: "Login", path: "/login" }} />
         )}
       </div>
-      <button
+      <Image
+        src="/menu.png"
+        alt=""
+        width={30}
+        height={30}
         className={styles.menuButton}
         onClick={() => setOpen((open) => !open)}
-      >
-        Menu
-      </button>
+      />
       {open && (
         <div className={styles.mobileLinks}>
           {LINKS.map((link) => (

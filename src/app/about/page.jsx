@@ -17,21 +17,21 @@ const AboutPage = () => {
         </p>
         <div className={styles.boxes}>
           <div className={styles.box}>
-            <p>10k</p>
+            <h1>10+</h1>
             <p>Years of experience</p>
           </div>
           <div className={styles.box}>
-            <p>10k</p>
+            <h1>10+</h1>
             <p>Years of experience</p>
           </div>
           <div className={styles.box}>
-            <p>10k</p>
+            <h1>10+</h1>
             <p>Years of experience</p>
           </div>
         </div>
       </div>
       <div className={styles.imgContainer}>
-        <Image src="/about.png" alt="" fill />
+        <Image className={styles.img} src="/about.png" alt="" fill />
       </div>
     </div>
   );

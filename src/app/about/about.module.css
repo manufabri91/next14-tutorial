@@ -30,5 +30,32 @@
 
 .boxes {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.box>h1 {
+  color: var(--btn);
+}
+
+.img {
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .boxes {
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+  }
 }
