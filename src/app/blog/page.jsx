@@ -1,21 +1,22 @@
 import PostCard from "@/components/postCard/PostCard";
 import styles from "./blog.module.css";
+import { getPosts } from "@/lib/data";
 
-const BlogPage = () => {
+
+export const metadata = {
+  title: "Blog",
+  description: "A very top blog",
+};
+
+const BlogPage = async () => {
+  const posts = await getPosts();
   return (
     <div className={styles.container}>
-      <div className={styles.post}>
-        <PostCard />
-      </div>
-      <div className={styles.post}>
-        <PostCard />
-      </div>
-      <div className={styles.post}>
-        <PostCard />
-      </div>
-      <div className={styles.post}>
-        <PostCard />
-      </div>
+      {posts.map((post) => (
+        <div className={styles.post} key={post.id}>
+          <PostCard post={post} />
+        </div>
+      ))}
     </div>
   );
 };
