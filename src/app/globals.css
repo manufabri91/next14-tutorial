@@ -1,9 +1,9 @@
 :root {
   --bg: #0d0c22;
-  --bgSoft: #0d0c22;
+  --bgSoft: #a70000;
   --text: white;
   --textSoft: #e5e5e5;
-  --btn: #3673fd;
+  --btn: #c00000;
 }
 
 * {
@@ -20,6 +20,10 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+input:-internal-autofill-selected {
+  background-color: inherit !important;
 }
 
 .container {

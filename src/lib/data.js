@@ -4,17 +4,17 @@ import { Post, User } from "./models";
 import { connectToDB } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
 
-// export const getPosts = async () => {
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-//     next: { revalidate: 3600 },
-//   });
+export const getPosts = async () => {
+  const res = await fetch("http://localhost:3000/api/blog", {
+    next: { revalidate: 3600 },
+  });
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong :(");
-//   }
+  if (!res.ok) {
+    throw new Error("Something went wrong :(");
+  }
 
-//   return await res.json();
-// };
+  return await res.json();
+};
 
 // export const getUserById = async (userId) => {
 //   const res = await fetch(
@@ -31,43 +31,40 @@ import { unstable_noStore as noStore } from "next/cache";
 //   return await res.json();
 // };
 
-// export const getPostById = async (userId) => {
-//   const res = await fetch(
-//     `https://jsonplaceholder.typicode.com/posts/${userId}`,
-//     {
-//       next: { revalidate: 3600 },
-//     }
-//   );
+export const getPostBySlug = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
+    next: { revalidate: 3600 },
+  });
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong :(");
-//   }
+  if (!res.ok) {
+    throw new Error("Something went wrong :(");
+  }
 
-//   return await res.json();
-// };
+  return await res.json();
+};
 // ---------------------------------------------------------
 
-export const getPosts = async () => {
-  try {
-    connectToDB();
-    const posts = await Post.find();
-    return posts;
-  } catch (error) {
-    console.log("Failed fetching posts");
-    throw new Error(error);
-  }
-};
+// export const getPosts = async () => {
+//   try {
+//     connectToDB();
+//     const posts = await Post.find();
+//     return posts;
+//   } catch (error) {
+//     console.log("Failed fetching posts");
+//     throw new Error(error);
+//   }
+// };
 
-export const getPostBySlug = async (slug) => {
-  try {
-    connectToDB();
-    const post = await Post.findOne({ slug });
-    return post;
-  } catch (error) {
-    console.log(`Failed fetching post with slug: ${slug}`);
-    throw new Error(error);
-  }
-};
+// export const getPostBySlug = async (slug) => {
+//   try {
+//     connectToDB();
+//     const post = await Post.findOne({ slug });
+//     return post;
+//   } catch (error) {
+//     console.log(`Failed fetching post with slug: ${slug}`);
+//     throw new Error(error);
+//   }
+// };
 
 export const getUsers = async () => {
   try {

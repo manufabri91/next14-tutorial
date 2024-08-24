@@ -26,21 +26,23 @@
 
 .form input,
 .form textarea {
+  width: 100%;
   padding: 20px;
+  border-color: rgb(233, 210, 2);
+  background-color: var(--bg);
+  color: var(--textColor);
   border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: var(--bgSoft);
-  color: var(--text);
 }
 
 .form button {
+  width: 100%;
   padding: 20px;
-  background-color: var(--btn);
-  color: var(--text);
-  font-weight: bold;
-  border-radius: 5px;
+  background-color: var(--bgSoft);
+  color: var(--textColor);
+  border-color: rgb(251, 255, 0);
+  border-radius: 50px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 @media (max-width: 640px) {

@@ -8,6 +8,5 @@
 }
 
 .active {
-  background-color: var(--text);
-  color: var(--bg);
+  background-color: var(--bgSoft);
 }

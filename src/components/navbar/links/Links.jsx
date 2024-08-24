@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from "./links.module.css";
 import NavbarLink from "../navbarLink/NavbarLink";
 import Image from "next/image";
+import { handleLogout } from "@/lib/actions";
 
 export const LINKS = [
   { title: "Homepage", path: "/" },
@@ -13,10 +14,8 @@ export const LINKS = [
   { title: "Blog", path: "/blog" },
 ];
 
-const Links = () => {
+const Links = ({ session }) => {
   const [open, setOpen] = useState(false);
-  const session = true;
-  const isAdmin = true;
 
   return (
     <div className={styles.container}>
@@ -24,11 +23,13 @@ const Links = () => {
         {LINKS.map((link) => (
           <NavbarLink item={link} key={link.title} />
         ))}
-        {session && isAdmin && (
+        {session && session.user?.isAdmin && (
           <NavbarLink item={{ title: "Admin", path: "/admin" }} />
         )}
         {session ? (
-          <button className={styles.logout}>Logout</button>
+          <form action={handleLogout}>
+            <button className={styles.logout}>Logout</button>
+          </form>
         ) : (
           <NavbarLink item={{ title: "Login", path: "/login" }} />
         )}
