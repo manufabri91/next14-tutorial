@@ -36,6 +36,7 @@ export const deletePost = async (formData) => {
     await Post.findByIdAndDelete(id);
     console.log("Saved to DB");
     revalidatePath("/blog");
+    revalidatePath("/admin");
   } catch (error) {
     console.log(error);
     throw new Error(error);
@@ -95,5 +96,46 @@ export const handleLogin = async (prevState, formData) => {
       return { error: "Wrong credentials" };
     }
     throw err;
+  }
+};
+
+export const addUser = async (previousState, formData) => {
+  const { username, email, password, img, isAdmin } =
+    Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const newUser = new User({
+      username,
+      email,
+      password,
+      img,
+      isAdmin,
+    });
+
+    await newUser.save();
+    console.log("Saved to DB");
+    revalidatePath("/blog");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
+export const deleteUser = async (formData) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    await Post.deleteMany({ userId: id });
+    await User.findByIdAndDelete(id);
+    console.log("Deleted from DB");
+    revalidatePath("/admin");
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
   }
 };
